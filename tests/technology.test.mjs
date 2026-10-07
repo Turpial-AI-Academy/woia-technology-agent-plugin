@@ -1,0 +1,27 @@
+import test from 'node:test';import assert from 'node:assert/strict';import {assessContribution} from '../skills/woia-technology/scripts/technology-eligibility.mjs';
+const base=()=>({kind:'context',organization:'org',environment:'test',resource:'resource',actor:'staff',owner:'owner',purpose:'operate',correlation:'operation',evidence:['synthetic:evidence'],provider_qualified:true,actor_authenticated:true,actor_authorized:true,source_current:true,source_version:'synthetic:v1'});
+const mutate=kind=>{const r={...base(),kind};r.authority={accepted:true,valid:true,organization:r.organization,environment:r.environment,resource:r.resource,actor:r.actor,operation:kind,purpose:r.purpose,evidence:'synthetic:authority'};return r};
+test('sourced context eligible without becoming executed effect',()=>assert.equal(assessContribution(base()).result,'ELIGIBLE'));
+for(const key of ['organization','environment','resource','actor','owner','purpose','correlation','evidence'])test('missing '+key+' blocks',()=>{const r=base();delete r[key];assert.equal(assessContribution(r).result,'BLOCKED')});
+for(const kind of ['access','binding','change','restore'])test('mutation '+kind+' requires authority',()=>assert.ok(assessContribution({...base(),kind}).reasons.includes('EXACT_AUTHORITY_REQUIRED')));
+for(const key of ['organization','environment','resource','actor','operation','purpose'])test('authority mismatch '+key,()=>{const r=mutate('access');r.authority[key]='other';assert.equal(assessContribution(r).result,'BLOCKED')});
+test('competence never substitutes authority',()=>assert.equal(assessContribution({...base(),kind:'access',trained:true}).result,'BLOCKED'));
+test('expired authority blocks',()=>{const r=mutate('access');r.authority.valid=false;assert.equal(assessContribution(r).result,'BLOCKED')});
+test('external dispatch blocks',()=>assert.equal(assessContribution({...base(),external_contact:true}).result,'BLOCKED'));
+test('financial execution blocks',()=>assert.equal(assessContribution({...base(),financial_effect:true}).result,'BLOCKED'));
+test('business acceptance blocks',()=>assert.equal(assessContribution({...base(),business_acceptance:true}).result,'BLOCKED'));
+test('secret values forbidden',()=>assert.equal(assessContribution({...base(),secret_value:'synthetic'}).result,'BLOCKED'));
+test('unqualified provider blocks',()=>assert.equal(assessContribution({...base(),provider_qualified:false}).result,'BLOCKED'));
+test('missing record blocks',()=>assert.equal(assessContribution().result,'BLOCKED'));
+test('stale health unknown',()=>assert.equal(assessContribution({...base(),kind:'health',observed_state:'HEALTHY',fresh:false}).observation,'UNKNOWN'));
+test('fresh health remains observation',()=>assert.equal(assessContribution({...base(),kind:'health',observed_state:'HEALTHY',fresh:true}).observation,'HEALTHY'));
+test('unknown effect requires reconciliation',()=>assert.equal(assessContribution({...base(),effect_outcome:'UNKNOWN'}).result,'BLOCKED'));
+test('UNKNOWN remains blocked even if reconciliation attempted',()=>assert.equal(assessContribution({...base(),effect_outcome:'UNKNOWN',reconciled:true}).result,'BLOCKED')); test('arbitrary effect outcome blocks',()=>assert.equal(assessContribution({...base(),effect_outcome:'other'}).result,'BLOCKED'));
+const restore=()=>{const r=mutate('restore');r.authority.candidate='immutable:artifact';r.authority.destination=r.resource;return {...r,candidate:'immutable:artifact',destination:'resource',preflight_pass:true,recovery_usable:true,current_permissions_verified:true,external_effects_preserved:true,revoked_permissions_restored:false,pending_work_reconciled:true}};
+for(const key of ['candidate','destination','preflight_pass','recovery_usable','current_permissions_verified','external_effects_preserved','pending_work_reconciled'])test('restore requires '+key,()=>{const r=restore();delete r[key];assert.equal(assessContribution(r).result,'BLOCKED')});
+test('restore cannot revive revoked access',()=>assert.equal(assessContribution({...restore(),revoked_permissions_restored:true}).result,'BLOCKED'));
+test('controlled restore eligible contribution only',()=>assert.equal(assessContribution(restore()).result,'ELIGIBLE'));
+for(const key of ['actor_authenticated','actor_authorized','source_current','source_version']) test('fail closed '+key,()=>{const r=base();delete r[key];assert.equal(assessContribution(r).result,'BLOCKED')});
+
+test('restore destination outside grant blocks',()=>assert.equal(assessContribution({...restore(),destination:'other'}).result,'BLOCKED'));
+test('restore different artifact blocks',()=>assert.equal(assessContribution({...restore(),candidate:'different'}).result,'BLOCKED'));

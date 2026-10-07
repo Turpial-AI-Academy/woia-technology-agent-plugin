@@ -1,55 +1,21 @@
 ---
 name: woia-technology
-description: Coordinate authorized infrastructure, access, bindings, health and recovery through qualified providers.
+description: Coordinate sourced technical context, authorized access and bindings, health, controlled changes and recovery through qualified Technology Operations providers.
 license: MIT
 ---
+# Technology methodology
 
-# woia-technology
+One selected root per organization, department and Project/context. This generic root has no Real Estate delta. Core v0.5.3 owns work, runtime, Effects, receipts, sessions, overlays, snapshots and cross-department mechanics. Never implement another task engine, IAM master, inventory master or scheduler here.
 
-## Operating flow
+## Five responsibilities
+1. Recover sourced technical context and dependency state: organization, resource, environment, owner, purpose, bindings, observed configuration and existing work. Distinguish desired configuration, observed state, installation and actual runtime load. Missing/stale observation is UNKNOWN. Reuse fresh evidence without a full audit each turn; expand for material change or risk.
+2. Coordinate permitted access/credentials/bindings from accepted joining/change/leaving decisions with exact actor, scope, environment, validity and constraints. People owns workforce context; competent actors grant authority; Technology Operations applies/revokes and verifies effective access. Preparation, accepted request, applied permission and effective access are distinct. Store secret references only. Training or technical access never grants business authority.
+3. Observe actual service progress/health and maintain qualified delivery/activation mechanisms. Uptime and no alerts never prove business completion. Observe attributable failure, source/freshness, correlation and response owner. Unsupported host activation is an explicit blocker. Do not invent thresholds, schedules or monitoring services; recovery of a failed dispatcher must not depend solely on it.
+4. Coordinate controlled changes against exact artifact/configuration, destination, authority, compatibility, preflight/result and usable recovery. Software owns engineering/deployment methods; Technology supplies distinct infrastructure/binding/activation contribution to the same operation, Data supplies integrity criteria, business owners accept outcomes. Never enlarge grants to repair a blocker or replace releases/history.
+5. Reconcile incidents and demonstrate recovery. Separate impact/cause observations from hypotheses. Backup success is not recoverability. Verify retained versions, references, integrity, current permissions, pending work and external outcomes. Restore does not undo external Effects or revive revoked permissions; UNKNOWN Effects require reconciliation before retry. Compensation needs separate authority. Close only demonstrated technical scope with owned residuals.
 
-~~~text
-DISCOVER -> DECIDE -> IMPLEMENT -> VALIDATE -> REPORT
-~~~
-
-## Purpose
-
-Maintain technical resources operable, protected and recoverable without owning business facts or Core runtime mechanics.
-
-## Minimum sufficient evidence
-
-Use a bounded path when an authoritative existing artifact/evidence set is healthy and the requested change is local and understood:
-
-1. identify the artifact/evidence, source candidate, and affected surface;
-2. load only supporting context and references needed for that surface;
-3. amend or re-evaluate the smallest coherent unit;
-4. verify affected behavior plus mandatory cross-cutting invariants;
-5. preserve unrelated valid artifacts/evidence and report what changed.
-
-Use the deep path for a new artifact, unclear scope or contradictory evidence, public API/event/schema changes, persisted data/migrations, authentication/authorization/secrets/signing/trust boundaries, deployment/rollback/availability risk, cross-provider dependency restructuring, unhealthy or unfamiliar conventions, missing durable required evidence, or a failed invariant that invalidates reused evidence. Load the references/checklists needed by those triggers and retain all required safety validation.
-
-## Discover
-
-Inspect actual repository/system state before changing it. Locate authoritative artifacts/evidence and identify affected standards, constraints, supported platforms, integrations, and user requirements. Expand context when a dependency, uncertainty, or deep-path trigger requires it.
-
-## Decide
-
-Select the smallest strategy that satisfies the capability. Preserve healthy existing standards. Do not infer policy from the author's workspace.
-
-## Implement
-
-Apply only authorized changes. Keep domain semantics independent from unrelated tooling.
-
-## Validate
-
-Run capability-appropriate checks and verify changed state. Reuse evidence only when it is durable, inspectable evidence of actual execution/observation with an identifiable candidate, checked surface, relevant inputs/environment, and outcome. Independently establish that it satisfies the gate being owned; prose claims or recollection are not execution evidence.
-
-A later mutation invalidates the checks whose coverage or inputs it affects. Rerun those checks and mandatory related invariants; preserve unaffected valid evidence. Reuse expensive runtime verification across an unchanged candidate and relevant environment. A new turn/session alone does not invalidate evidence. Execute or observe relevant checks when required evidence cannot be inspected or established. Skipped/unavailable checks are not PASS.
+## Qualified contributions
+Load [contracts](references/technology-contract.md) for access, health, change or recovery decisions. Use the deterministic [eligibility helper](scripts/technology-eligibility.mjs) as a fail-closed contract check, never as permission issuance or provider execution. Runtime resource bindings resolve approved providers via Core; availability alone is not authority. Technology Operations implements operations, not this root. Internal authenticated/authorized staff messaging only through Communications. External contact routes to Customer Service; no direct human dispatch here.
 
 ## Report
-
-Report current state, source candidate, affected surface, decisions, changes, and exact usage/maintenance commands. Distinguish reusable evidence, invalidated evidence, freshly established evidence, and assumptions/inferences that are not evidence. Include remaining risks and uncertainties.
-
-## Detailed references
-
-Add focused files under `references/` only when more detail is needed and give each reference a concrete scope/risk/ambiguity load trigger. Load triggered safety references; a bounded amendment does not require every reference or full template replay. Add scripts/assets only when they materially improve deterministic execution.
+Preserve immutable sourced evidence, operation identity and owner acceptance. Report eligible contributions, UNKNOWN/blockers, actual provider outcome, residuals and next owner. This plugin is engineering-tested; no live adapter, Operator E2E or Production Ready claim follows.

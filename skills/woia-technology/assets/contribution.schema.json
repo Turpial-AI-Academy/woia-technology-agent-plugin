@@ -1,0 +1,70 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Technology contribution",
+  "type": "object",
+  "required": [
+    "kind",
+    "organization",
+    "environment",
+    "resource",
+    "actor",
+    "owner",
+    "purpose",
+    "correlation",
+    "evidence",
+    "provider_qualified"
+  ],
+  "properties": {
+    "kind": {
+      "enum": [
+        "context",
+        "access",
+        "binding",
+        "health",
+        "change",
+        "restore",
+        "recovery"
+      ]
+    },
+    "organization": {
+      "type": "string",
+      "minLength": 1
+    },
+    "environment": {
+      "type": "string",
+      "minLength": 1
+    },
+    "resource": {
+      "type": "string",
+      "minLength": 1
+    },
+    "actor": {
+      "type": "string",
+      "minLength": 1
+    },
+    "owner": {
+      "type": "string",
+      "minLength": 1
+    },
+    "purpose": {
+      "type": "string",
+      "minLength": 1
+    },
+    "correlation": {
+      "type": "string",
+      "minLength": 1
+    },
+    "evidence": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "type": "string",
+        "minLength": 1
+      }
+    },
+    "provider_qualified": {
+      "type": "boolean"
+    }
+  },
+  "additionalProperties": true
+}

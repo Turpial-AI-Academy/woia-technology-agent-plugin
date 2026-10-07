@@ -1,0 +1,9 @@
+# Generic Technology contract
+
+Source: accepted ADR-0022 and capability/source/authority contracts (docs/21, docs/22, docs/24, docs/25, docs/26), coordination commit b716f1d1c0e2bc5ecf946043b337a2ddba4285f0. Historical pre-B6 implementation holds do not change accepted boundaries.
+
+Allowed contributions are sourced context, authorized access/bindings, actual health, controlled technical changes and incident/recovery coordination. Provider operations remain Technology Operations. Core handles mechanics; Software handles engineering/deployment; Data integrity and source semantics; Finance financial acceptance and effects. No department master or copied business truth. Business-source authority and competent acceptance remain with the declared owner.
+
+The helper checks an explicit operation record: organization, environment, resource, actor, owner, purpose, correlation, evidence references; accepted exact scoped authority for mutations; qualified provider; immutable candidate and destination for changes; outcome reconciliation for unknown effects; current permission validation and external-effect preservation for restore. It returns ELIGIBLE or BLOCKED with reasons and never dispatches. Eligible means a contribution can proceed to its separately qualified provider, not an executed/accepted business fact. Missing/stale health is UNKNOWN. Secret values must never enter records.
+
+Records must be persisted in organization-controlled bound sources. This plugin supplies contracts, not storage or universal enforcement. Record provider receipts and resulting observed state separately. Failure leaves prior evidence and in-flight pins intact. Exact authority validity must be evaluated by a qualified host against authoritative policy; an explicit authority decision is input, never inferred from the clock, competence or technical access.
