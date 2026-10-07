@@ -27,3 +27,5 @@ mise run release:check
 Also run `skills-ref validate` for each skill when available.
 
 No placeholder token or scaffold-only `README.plugin.md` may remain in the release candidate.
+
+Technology domain regression: exact scoped authority, stale UNKNOWN observations, provider qualification, no external dispatch/business acceptance/financial effects, controlled restore preserving external Effects/current permissions/pending work. No live provider qualification or Operator E2E claim.
