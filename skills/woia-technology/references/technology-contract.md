@@ -1,6 +1,5 @@
 # Generic Technology contract
 
-Source: accepted ADR-0022 and capability/source/authority contracts (docs/21, docs/22, docs/24, docs/25, docs/26), coordination commit b716f1d1c0e2bc5ecf946043b337a2ddba4285f0. Historical pre-B6 implementation holds do not change accepted boundaries.
 
 Allowed contributions are sourced context, authorized access/bindings, actual health, controlled technical changes and incident/recovery coordination. Provider operations remain Technology Operations. Core handles mechanics; Software handles engineering/deployment; Data integrity and source semantics; Finance financial acceptance and effects. No department master or copied business truth. Business-source authority and competent acceptance remain with the declared owner.
 
