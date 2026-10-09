@@ -5,7 +5,7 @@ license: MIT
 ---
 # Technology methodology
 
-One selected root per organization, department and Project/context. This generic root has no Real Estate delta. Core v0.5.6 owns work, runtime, Effects, receipts, sessions, overlays, snapshots and cross-department mechanics. Never implement another task engine, IAM master, inventory master or scheduler here.
+One selected root per organization, department and Project/context. This generic root has no Real Estate delta. Core v0.5.7 owns work, runtime, Effects, receipts, sessions, overlays, snapshots and cross-department mechanics. Never implement another task engine, IAM master, inventory master or scheduler here.
 
 ## Five responsibilities
 1. Recover sourced technical context and dependency state: organization, resource, environment, owner, purpose, bindings, observed configuration and existing work. Distinguish desired configuration, observed state, installation and actual runtime load. Missing/stale observation is UNKNOWN. Reuse fresh evidence without a full audit each turn; expand for material change or risk.

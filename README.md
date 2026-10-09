@@ -42,4 +42,4 @@ mise run release:check
 
 ## Technology department root
 
-Generic five-responsibility Technology methodology grounded in ADR-0022. Requires Core >=0.5.6. Operates through qualified Technology Operations bindings; does not dispatch effects itself. See skills/woia-technology/references/technology-contract.md. Synthetic negative regression does not qualify live infrastructure, Operator E2E or Production Ready.
+Generic five-responsibility Technology methodology grounded in ADR-0022. Requires Core >=0.5.7. Operates through qualified Technology Operations bindings; does not dispatch effects itself. See skills/woia-technology/references/technology-contract.md. Synthetic negative regression does not qualify live infrastructure, Operator E2E or Production Ready.

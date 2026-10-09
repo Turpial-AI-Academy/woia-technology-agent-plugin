@@ -1,7 +1,7 @@
 {
   "$schema": "https://agent-plugins.org/schemas/1.0.0/plugin.schema.json",
   "name": "woia-technology",
-  "version": "0.5.6",
+  "version": "0.5.7",
   "description": "Coordinate authorized infrastructure, access, bindings, health and recovery through qualified providers.",
   "author": {
     "name": "Turpial AI Academy",
